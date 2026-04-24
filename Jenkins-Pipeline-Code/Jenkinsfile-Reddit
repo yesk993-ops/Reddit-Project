@@ -57,7 +57,7 @@ pipeline{
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image mydocker3692/reddit:latest > trivy.txt"
+                sh "trivy image mydocker3692/reddit:9 > trivy.txt"
             }
         }
         stage('Update Deployment file') {
@@ -69,7 +69,7 @@ pipeline{
                 dir('K8s'){
                     withCredentials([string(credentialsId: 'githubcred', variable: 'GITHUB_TOKEN')]) {
                         sh '''
-                            git config user.email "madithatisreedhar123@gmail.com"
+                            git config user.email "yesk993@gmail.com"
                             git config user.name "yesk993-ops"
                             BUILD_NUMBER=${BUILD_NUMBER}
                             echo $BUILD_NUMBER
